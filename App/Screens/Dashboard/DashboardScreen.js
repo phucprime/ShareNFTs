@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import {
   View,
   Text,
@@ -47,7 +47,8 @@ const DashboardScreen = (props) => {
             }}
             source={require("../../Assets/logo1.png")}
           />
-          <View
+          <TouchableOpacity
+            onPress={() => props.navigation.navigate("Settings")}
             style={{
               height: 40,
               width: 113,
@@ -71,7 +72,7 @@ const DashboardScreen = (props) => {
               {/* {userDetail.username} */}
               {` username`}
             </Text>
-          </View>
+          </TouchableOpacity>
         </View>
 
         <View
