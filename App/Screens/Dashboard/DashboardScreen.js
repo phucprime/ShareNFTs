@@ -1,4 +1,4 @@
-import React, {useState, useRef, useEffect, useCallback} from 'react';
+import React, { useState, useEffect } from "react";
 import {
   View,
   Text,
@@ -6,25 +6,20 @@ import {
   SafeAreaView,
   Image,
   TouchableOpacity,
-  ScrollView,
-} from 'react-native';
-import styles from './styles';
+} from "react-native";
+import styles from "./styles";
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
-} from '../../Components/ResponsiveLayout';
-import MyNFTs from '../../Components/MyNFTs';
-import SentNFT from '../../Components/SentNFT';
-import ReceivedNFT from '../../Components/ReceivedNFT';
-import {useDispatch, useSelector} from 'react-redux';
+} from "../../Components/ResponsiveLayout";
+import MyNFTs from "../../Components/MyNFTs";
+import SentNFT from "../../Components/SentNFT";
+import ReceivedNFT from "../../Components/ReceivedNFT";
 
-const DashboardScreen = props => {
-  const [activeButtonName, setActiveButtonName] = React.useState('My NFTs');
-  const {userDetail} = useSelector(state => state.userDetail);
-  const [user, setUser] = React.useState(userDetail);
-  const dispatch = useDispatch();
+const DashboardScreen = (props) => {
+  const [activeButtonName, setActiveButtonName] = React.useState("My NFTs");
 
-  const changeButtonName = text => {
+  const changeButtonName = (text) => {
     setActiveButtonName(text);
   };
 
@@ -36,41 +31,43 @@ const DashboardScreen = props => {
         translucent={true}
       />
 
-      <View style={{backgroundColor: '#202424', height: hp('30%')}}>
+      <View style={{ backgroundColor: "#202424", height: hp("30%") }}>
         <View
           style={{
-            width: wp('80%'),
-            justifyContent: 'center',
+            width: wp("80%"),
+            justifyContent: "center",
             marginTop: 68,
-            flexDirection: 'row',
-          }}>
+            flexDirection: "row",
+          }}
+        >
           <Image
             style={{
-              width: wp('50%'),
-              height: hp('5%'),
+              width: wp("50%"),
+              height: hp("5%"),
             }}
-            source={require('../../Assets/logo1.png')}
+            source={require("../../Assets/logo1.png")}
           />
           <View
             style={{
               height: 40,
               width: 113,
-              backgroundColor: 'rgba(255, 255, 255, 0.2)',
+              backgroundColor: "rgba(255, 255, 255, 0.2)",
               borderRadius: 50,
-              justifyContent: 'center',
-              alignItems: 'center',
-              alignSelf: 'center',
+              justifyContent: "center",
+              alignItems: "center",
+              alignSelf: "center",
               left: 60,
-              flexDirection: 'row',
-            }}>
+              flexDirection: "row",
+            }}
+          >
             <Image
               style={{
                 width: 27,
                 height: 27,
               }}
-              source={require('../../Assets/profile.png')}
+              source={require("../../Assets/profile.png")}
             />
-            <Text style={{fontSize: 14, color: '#fff'}}>
+            <Text style={{ fontSize: 14, color: "#fff" }}>
               {/* {userDetail.username} */}
               {` username`}
             </Text>
@@ -79,92 +76,99 @@ const DashboardScreen = props => {
 
         <View
           style={{
-            height: hp('8%'),
-            width: wp('95%'),
-            backgroundColor: 'rgba(255, 255, 255, 0.21)',
+            height: hp("8%"),
+            width: wp("95%"),
+            backgroundColor: "rgba(255, 255, 255, 0.21)",
             borderRadius: 10,
-            alignSelf: 'center',
+            alignSelf: "center",
             marginTop: 30,
-            flexDirection: 'row',
-          }}>
+            flexDirection: "row",
+          }}
+        >
           <TouchableOpacity
-            onPress={() => changeButtonName('My NFTs')}
+            onPress={() => changeButtonName("My NFTs")}
             style={{
-              justifyContent: 'center',
-              alignItems: 'center',
+              justifyContent: "center",
+              alignItems: "center",
               backgroundColor:
-                activeButtonName === 'My NFTs' ? '#fff' : 'transparent',
-              height: '80%',
-              width: '32%',
-              marginLeft: '1.5%',
+                activeButtonName === "My NFTs" ? "#fff" : "transparent",
+              height: "80%",
+              width: "32%",
+              marginLeft: "1.5%",
               borderRadius: 10,
-              alignSelf: 'center',
-            }}>
+              alignSelf: "center",
+            }}
+          >
             <Text
               style={{
-                textAlign: 'center',
-                color: activeButtonName === 'My NFTs' ? '#000' : '#fff',
+                textAlign: "center",
+                color: activeButtonName === "My NFTs" ? "#000" : "#fff",
                 fontSize: 16,
-                fontWeight: activeButtonName === 'My NFTs' ? 'bold' : 'normal',
-              }}>
+                fontWeight: activeButtonName === "My NFTs" ? "bold" : "normal",
+              }}
+            >
               My NFTs
             </Text>
           </TouchableOpacity>
 
           <TouchableOpacity
-            onPress={() => changeButtonName('Sent')}
+            onPress={() => changeButtonName("Sent")}
             style={{
-              justifyContent: 'center',
-              alignItems: 'center',
+              justifyContent: "center",
+              alignItems: "center",
               backgroundColor:
-                activeButtonName === 'Sent' ? '#fff' : 'transparent',
-              height: '80%',
-              width: '32%',
-              marginRight: '1%',
+                activeButtonName === "Sent" ? "#fff" : "transparent",
+              height: "80%",
+              width: "32%",
+              marginRight: "1%",
               borderRadius: 10,
-              alignSelf: 'center',
-            }}>
+              alignSelf: "center",
+            }}
+          >
             <Text
               style={{
-                textAlign: 'center',
-                color: activeButtonName === 'Sent' ? '#000' : '#fff',
+                textAlign: "center",
+                color: activeButtonName === "Sent" ? "#000" : "#fff",
                 fontSize: 16,
-                fontWeight: activeButtonName === 'Sent' ? 'bold' : 'normal',
-              }}>
+                fontWeight: activeButtonName === "Sent" ? "bold" : "normal",
+              }}
+            >
               Sent
             </Text>
           </TouchableOpacity>
 
           <TouchableOpacity
-            onPress={() => changeButtonName('Received')}
+            onPress={() => changeButtonName("Received")}
             style={{
-              justifyContent: 'center',
-              alignItems: 'center',
+              justifyContent: "center",
+              alignItems: "center",
               backgroundColor:
-                activeButtonName === 'Received' ? '#fff' : 'transparent',
-              height: '80%',
-              width: '32%',
-              marginRight: '1%',
+                activeButtonName === "Received" ? "#fff" : "transparent",
+              height: "80%",
+              width: "32%",
+              marginRight: "1%",
               borderRadius: 10,
-              alignSelf: 'center',
-            }}>
+              alignSelf: "center",
+            }}
+          >
             <Text
               style={{
-                textAlign: 'center',
-                color: activeButtonName === 'Received' ? '#000' : '#fff',
+                textAlign: "center",
+                color: activeButtonName === "Received" ? "#000" : "#fff",
                 fontSize: 16,
-                fontWeight: activeButtonName === 'Received' ? 'bold' : 'normal',
-              }}>
+                fontWeight: activeButtonName === "Received" ? "bold" : "normal",
+              }}
+            >
               Received
             </Text>
           </TouchableOpacity>
         </View>
       </View>
 
-      <View style={{height: hp('90%'), backgroundColor: '#ededed'}}>
-        {activeButtonName === 'My NFTs' && <MyNFTs props={props} />}
-        {activeButtonName === 'Sent' && <SentNFT props={props} />}
-        {activeButtonName === 'Received' && <ReceivedNFT props={props} />}
+      <View style={{ height: hp("90%"), backgroundColor: "#ededed" }}>
+        {activeButtonName === "My NFTs" && <MyNFTs props={props} />}
+        {activeButtonName === "Sent" && <SentNFT props={props} />}
+        {activeButtonName === "Received" && <ReceivedNFT props={props} />}
       </View>
     </SafeAreaView>
   );
