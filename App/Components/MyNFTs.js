@@ -3,7 +3,6 @@ import {
   FlatList,
   Image,
   SafeAreaView,
-  ScrollView,
   Text,
   TouchableOpacity,
   View,
