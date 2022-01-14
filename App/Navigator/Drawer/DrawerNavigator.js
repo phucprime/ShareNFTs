@@ -1,14 +1,14 @@
-import React from 'react';
+import React from "react";
 
-import {createDrawerNavigator} from '@react-navigation/drawer';
+import { createDrawerNavigator } from "@react-navigation/drawer";
 
-import DrawerNavigatorOptions /* DrawerContent */ from './DrawerNavigatorOptions';
+import DrawerNavigatorOptions from "./DrawerNavigatorOptions";
 
 const Drawer = createDrawerNavigator();
 
 const DrawerNavigator = () => {
   return (
-    <Drawer.Navigator /* drawerContent={DrawerContent} */>
+    <Drawer.Navigator>
       <DrawerNavigatorOptions />
     </Drawer.Navigator>
   );
