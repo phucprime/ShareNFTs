@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import {
   View,
   Text,
@@ -7,7 +7,6 @@ import {
   StatusBar,
   KeyboardAvoidingView,
   ScrollView,
-  StyleSheet,
   Image,
   Platform,
   SafeAreaView,
@@ -18,7 +17,6 @@ import {
 } from "../../Components/ResponsiveLayout";
 import styles from "./styles";
 import AntDesign from "react-native-vector-icons/AntDesign";
-import { signUpService } from "../../Store/Actions/SignUp";
 import { useDispatch } from "react-redux";
 import { logInService } from "../../Store/Actions/Login";
 
