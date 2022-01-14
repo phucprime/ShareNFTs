@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useCallback} from 'react';
+import React, { useState } from "react";
 import {
   View,
   Text,
@@ -8,32 +8,30 @@ import {
   SafeAreaView,
   ScrollView,
   ImageBackground,
-} from 'react-native';
-import styles from './styles';
+} from "react-native";
+import styles from "./styles";
 import {
   CodeField,
   Cursor,
   useBlurOnFulfill,
   useClearByFocusCell,
-} from 'react-native-confirmation-code-field';
+} from "react-native-confirmation-code-field";
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
-} from '../../Components/ResponsiveLayout';
-import {logInService} from '../../Store/Actions/Login';
-import {useDispatch} from 'react-redux';
-import {signUpService} from '../../Store/Actions/SignUp';
-import {verifyLoginService} from '../../Store/Actions/VerifyLogin';
-import {userDetailService} from '../../Store/Actions/UserInfo';
-import {verifySignUpService} from '../../Store/Actions/VerifySignUp';
+} from "../../Components/ResponsiveLayout";
+import { useDispatch } from "react-redux";
+import { signUpService } from "../../Store/Actions/SignUp";
+import { userDetailService } from "../../Store/Actions/UserInfo";
+import { verifySignUpService } from "../../Store/Actions/VerifySignUp";
 
 const CELL_COUNT = 6;
 
-const VerificationCode = props => {
-  const [value, setValue] = useState('');
+const VerificationCode = (props) => {
+  const [value, setValue] = useState("");
   const dispatch = useDispatch();
 
-  const ref = useBlurOnFulfill({value, cellCount: CELL_COUNT});
+  const ref = useBlurOnFulfill({ value, cellCount: CELL_COUNT });
 
   const [prop, getCellOnLayoutHandler] = useClearByFocusCell({
     value,
@@ -69,19 +67,20 @@ const VerificationCode = props => {
         <View style={styles.mainContainer}>
           {/*top bar image*/}
           <ImageBackground
-            source={require('../../Assets/Header.png')}
+            source={require("../../Assets/Header.png")}
             style={{
-              width: '100%',
+              width: "100%",
               height: 150,
-            }}>
+            }}
+          >
             <View style={styles.imageView}>
               <Image
                 style={{
-                  width: wp('50%'),
-                  height: hp('7%'),
+                  width: wp("50%"),
+                  height: hp("7%"),
                   marginTop: 10,
                 }}
-                source={require('../../Assets/logo.png')}
+                source={require("../../Assets/logo.png")}
               />
             </View>
           </ImageBackground>
@@ -91,23 +90,24 @@ const VerificationCode = props => {
           <Text
             style={{
               fontSize: 18,
-              fontWeight: 'bold',
-              color: '#000',
+              fontWeight: "bold",
+              color: "#000",
               marginTop: 30,
-            }}>
+            }}
+          >
             Enter Verification Code
           </Text>
-          <Text style={{fontSize: 16, marginTop: 30}}>
+          <Text style={{ fontSize: 16, marginTop: 30 }}>
             We've sent a 6-digit Verification code to
           </Text>
-          <Text style={{fontSize: 16, marginTop: 5}}>the email address</Text>
-          <Text style={{color: '#4D8EFC', fontSize: 16, marginTop: 5}}>
-            {props.route.params.loginData}
+          <Text style={{ fontSize: 16, marginTop: 5 }}>the email address</Text>
+          <Text style={{ color: "#4D8EFC", fontSize: 16, marginTop: 5 }}>
+            {`<your email address>`}
           </Text>
 
           {/*Verification code */}
 
-          <Text style={{fontSize: 16, marginTop: 30}}>
+          <Text style={{ fontSize: 16, marginTop: 30 }}>
             Enter Verification Code
           </Text>
           <SafeAreaView style={styles.root}>
@@ -120,11 +120,12 @@ const VerificationCode = props => {
               rootStyle={styles.codeFieldRoot}
               keyboardType="number-pad"
               textContentType="oneTimeCode"
-              renderCell={({index, symbol, isFocused}) => (
+              renderCell={({ index, symbol, isFocused }) => (
                 <Text
                   key={index}
                   style={[styles.cell, isFocused && styles.focusCell]}
-                  onLayout={getCellOnLayoutHandler(index)}>
+                  onLayout={getCellOnLayoutHandler(index)}
+                >
                   {symbol || (isFocused ? <Cursor /> : null)}
                 </Text>
               )}
@@ -140,21 +141,24 @@ const VerificationCode = props => {
                 props.route.params.loginType,
                 value,
                 props.route.params.loginData,
-                props,
+                props
               )
             }
             style={{
-              height: hp('8%'),
-              width: wp('85%'),
-              backgroundColor: '#C4C4C4',
+              height: hp("8%"),
+              width: wp("85%"),
+              backgroundColor: "#C4C4C4",
               borderRadius: 10,
-              alignSelf: 'center',
+              alignSelf: "center",
               top: 90,
-              flexDirection: 'row',
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}>
-            <Text style={{color: '#968E8E', fontSize: 18, fontWeight: 'bold'}}>
+              flexDirection: "row",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <Text
+              style={{ color: "#968E8E", fontSize: 18, fontWeight: "bold" }}
+            >
               Verify and Continue
             </Text>
           </TouchableOpacity>
@@ -166,30 +170,32 @@ const VerificationCode = props => {
                 props.route.params.loginType,
                 value,
                 props.route.params.loginData,
-                props,
+                props
               )
             }
             style={{
-              height: hp('8%'),
-              width: wp('85%'),
-              backgroundColor: '#4D8EFC',
+              height: hp("8%"),
+              width: wp("85%"),
+              backgroundColor: "#4D8EFC",
               borderRadius: 10,
-              alignSelf: 'center',
+              alignSelf: "center",
               top: 90,
-              flexDirection: 'row',
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}>
-            <Text style={{color: '#fff', fontSize: 18, fontWeight: 'bold'}}>
+              flexDirection: "row",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <Text style={{ color: "#fff", fontSize: 18, fontWeight: "bold" }}>
               Verify and Continue
             </Text>
           </TouchableOpacity>
         )}
 
         <TouchableOpacity
-          onPress={() => props.navigation.navigate('Signin')}
-          style={styles.cancelButton}>
-          <Text style={{fontSize: 20, fontWeight: 'bold'}}>Cancel</Text>
+          onPress={() => props.navigation.navigate("Signin")}
+          style={styles.cancelButton}
+        >
+          <Text style={{ fontSize: 20, fontWeight: "bold" }}>Cancel</Text>
         </TouchableOpacity>
 
         <View style={styles.line2} />
@@ -208,9 +214,10 @@ const VerificationCode = props => {
               resend(
                 props.route.params.loginType,
                 props.route.params.loginData,
-                props,
+                props
               )
-            }>
+            }
+          >
             <Text style={styles.resendCodeText}>Resend your code</Text>
           </TouchableOpacity>
         </View>
