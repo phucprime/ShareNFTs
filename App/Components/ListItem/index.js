@@ -1,15 +1,14 @@
-import React, {Component} from 'react';
+import React, { Component } from "react";
 import {
   View,
   TouchableHighlight,
   Text,
   StyleSheet,
-  Platform,
   Animated,
-} from 'react-native';
-import PropTypes from 'prop-types';
-import {RectButton} from 'react-native-gesture-handler';
-import Swipeable from 'react-native-gesture-handler/Swipeable';
+} from "react-native";
+import PropTypes from "prop-types";
+import { RectButton } from "react-native-gesture-handler";
+import Swipeable from "react-native-gesture-handler/Swipeable";
 
 class ListItem extends Component {
   static propTypes = {
@@ -31,7 +30,7 @@ class ListItem extends Component {
     });
 
     const pressHandler = () => {
-      const {onDelete} = this.props;
+      const { onDelete } = this.props;
       if (onDelete) {
         onDelete();
       }
@@ -39,29 +38,30 @@ class ListItem extends Component {
     };
 
     return (
-      <Animated.View style={{flex: 1, transform: [{translateX: trans}]}}>
+      <Animated.View style={{ flex: 1, transform: [{ translateX: trans }] }}>
         <RectButton
-          style={[styles.rightAction, {backgroundColor: color}]}
-          onPress={pressHandler}>
-          <Text style={{color: '#fff'}}>Delete</Text>
+          style={[styles.rightAction, { backgroundColor: color }]}
+          onPress={pressHandler}
+        >
+          <Text style={{ color: "#fff" }}>Delete</Text>
         </RectButton>
       </Animated.View>
     );
   };
 
-  renderRightActions = progress => (
-    <View style={{width: 64, flexDirection: 'row'}}>
-      {this.renderRightAction('trash', '#ef5350', 64, progress)}
+  renderRightActions = (progress) => (
+    <View style={{ width: 64, flexDirection: "row" }}>
+      {this.renderRightAction("trash", "#ef5350", 64, progress)}
     </View>
   );
 
-  renderRightActions = progress => (
-    <View style={{width: 64, flexDirection: 'row'}}>
-      {this.renderRightAction('trash', '#ef5350', 64, progress)}
+  renderRightActions = (progress) => (
+    <View style={{ width: 64, flexDirection: "row" }}>
+      {this.renderRightAction("trash", "#ef5350", 64, progress)}
     </View>
   );
 
-  updateRef = ref => {
+  updateRef = (ref) => {
     this.swipeableRow = ref;
   };
 
@@ -98,12 +98,14 @@ class ListItem extends Component {
       <Swipeable
         ref={this.updateRef}
         friction={1}
-        renderRightActions={this.renderRightActions}>
+        renderRightActions={this.renderRightActions}
+      >
         <Component
           onPress={onPress}
           onLongPress={onLongPress}
           disabled={disabled}
-          underlayColor="#f2f3f5">
+          underlayColor="#f2f3f5"
+        >
           <View style={itemContainer}>
             {leftElement ? (
               <View style={leftElementContainer}>{leftElement}</View>
@@ -138,35 +140,35 @@ class ListItem extends Component {
 
 const styles = StyleSheet.create({
   itemContainer: {
-    flexDirection: 'row',
+    flexDirection: "row",
     minHeight: 44,
     height: 63,
   },
   leftElementContainer: {
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     flex: 2,
     paddingLeft: 13,
   },
   rightSectionContainer: {
     marginLeft: 18,
-    flexDirection: 'row',
+    flexDirection: "row",
     flex: 20,
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: '#515151',
+    borderColor: "#515151",
   },
   mainTitleContainer: {
-    justifyContent: 'center',
-    flexDirection: 'column',
+    justifyContent: "center",
+    flexDirection: "column",
     flex: 1,
   },
   rightElementContainer: {
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     flex: 0.4,
   },
   rightTextContainer: {
-    justifyContent: 'center',
+    justifyContent: "center",
     marginRight: 10,
   },
   titleStyle: {
@@ -174,12 +176,12 @@ const styles = StyleSheet.create({
   },
   descriptionStyle: {
     fontSize: 14,
-    color: '#515151',
+    color: "#515151",
   },
   rightAction: {
-    alignItems: 'center',
+    alignItems: "center",
     flex: 1,
-    justifyContent: 'center',
+    justifyContent: "center",
   },
 });
 
