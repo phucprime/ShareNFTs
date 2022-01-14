@@ -1,39 +1,25 @@
 import React, { useEffect, useState } from "react";
 import {
   ActivityIndicator,
-  FlatList,
-  Image,
   ImageBackground,
-  Platform,
   SafeAreaView,
   ScrollView,
   StatusBar,
   Text,
-  TextInput,
   TouchableOpacity,
   View,
 } from "react-native";
-import styles from "../VarificationCode/styles";
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
 } from "../../Components/ResponsiveLayout";
 import AntDesign from "react-native-vector-icons/AntDesign";
-import DropDownPicker from "react-native-dropdown-picker";
-import Ionicons from "react-native-vector-icons/Ionicons";
 import Feather from "react-native-vector-icons/Feather";
-import { PermissionsAndroid } from "react-native";
-import Contacts from "react-native-contacts";
-import SimpleLineIcons from "react-native-vector-icons/SimpleLineIcons";
 import SearchBar from "../../Components/SearchBar";
 import Avatar from "../../Components/Avatar";
 import ListItem from "../../Components/ListItem";
 
 const SendNFT = (props) => {
-  const [size, setSize] = React.useState("");
-  const [searchPlaceholder, setSearchPlaceholder] =
-    useState("Search contacts...");
-  const [typeText, setTypeText] = useState("Search");
   const [loading, setLoading] = useState(true);
   const [contacts, setContacts] = useState([
     {
@@ -61,10 +47,6 @@ const SendNFT = (props) => {
       setLoading(false);
     }, 1500);
   });
-
-  const onChangeSize = (text) => {
-    setSize(text);
-  };
 
   const setCheckedOnList = (contact) => {
     let contactsCopy = contacts;
@@ -150,7 +132,7 @@ const SendNFT = (props) => {
         ></View>
 
         <SearchBar
-          searchPlaceholder={searchPlaceholder}
+          searchPlaceholder="Search contacts..."
           onChangeText={search}
         />
 
