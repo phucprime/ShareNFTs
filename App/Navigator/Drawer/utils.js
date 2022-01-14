@@ -1,8 +1,8 @@
 const utils = {
   screens: [
     {
-      icon: 'home',
-      name: 'Home',
+      icon: "home",
+      name: "Home",
     },
   ],
 };
