@@ -1,32 +1,32 @@
-import React, {useState, useMemo, useEffect} from 'react';
-import {StyleSheet, Text, View} from 'react-native';
-import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {createDrawerNavigator} from '@react-navigation/drawer';
-import DashboardScreen from '../Screens/Dashboard/DashboardScreen';
-import SigninScreen from '../Screens/SignIn/SigninScreen';
-import VerificationCode from '../Screens/VarificationCode/VarificationCode';
-import CreateNFTScreen from '../Screens/CreateNFT/CreateNFTScreen';
-import PreviewNFT from '../Screens/CreateNFT/PreviewNFT';
-import SendNFT from '../Screens/SendNFT/SendNFT';
-import CreateAccount from '../Screens/CreateAccount/CreateAccount';
-import SecureAccount from '../Screens/SecureAccount/SecureAccount';
-import login from '../Screens/SignIn/login';
-import loginVerify from '../Screens/VarificationCode/loginVerify';
-import {useSelector} from 'react-redux';
-import ClaimNFT from '../Screens/ClaimNFT/ClaimNFT';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import Settings from '../Screens/Settings/Settings';
+import React, { useState, useMemo, useEffect } from "react";
+import { StyleSheet, Text, View } from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { createDrawerNavigator } from "@react-navigation/drawer";
+import DashboardScreen from "../Screens/Dashboard/DashboardScreen";
+import SigninScreen from "../Screens/SignIn/SigninScreen";
+import VerificationCode from "../Screens/VarificationCode/VarificationCode";
+import CreateNFTScreen from "../Screens/CreateNFT/CreateNFTScreen";
+import PreviewNFT from "../Screens/CreateNFT/PreviewNFT";
+import SendNFT from "../Screens/SendNFT/SendNFT";
+import CreateAccount from "../Screens/CreateAccount/CreateAccount";
+import SecureAccount from "../Screens/SecureAccount/SecureAccount";
+import login from "../Screens/SignIn/login";
+import loginVerify from "../Screens/VarificationCode/loginVerify";
+import ClaimNFT from "../Screens/ClaimNFT/ClaimNFT";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import Settings from "../Screens/Settings/Settings";
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
 
-const DashboardStack = props => {
+const DashboardStack = (props) => {
   return (
     <Stack.Navigator
       screenOptions={{
         headerShown: false,
-      }}>
+      }}
+    >
       {/*<Stack.Screen name="Splash" component={SplashScreen} />*/}
       <Stack.Screen name="Signin" component={SigninScreen} />
       <Stack.Screen name="login" component={login} />
@@ -42,11 +42,12 @@ const DashboardStack = props => {
   );
 };
 
-const MainDrawer = props => {
+const MainDrawer = (props) => {
   return (
     <Drawer.Navigator
       initialRouteName="Home"
-      screenOptions={{headerShown: false}}>
+      screenOptions={{ headerShown: false }}
+    >
       <Drawer.Screen name="Home" component={DashboardScreen} />
       <Drawer.Screen name="createNFT" component={CreateNFTScreen} />
       <Drawer.Screen name="SendNFT" component={SendNFT} />
@@ -56,23 +57,7 @@ const MainDrawer = props => {
   );
 };
 
-const AppNavigator = props => {
-  const [token, setToken] = React.useState('');
-
-  const getToken = async () => {
-    const userData = await AsyncStorage.getItem('userData');
-    const transformedUserData = JSON.parse(userData);
-    const {token} = transformedUserData;
-    setToken(token);
-  };
-
-  useEffect(() => {
-    // Update the document title using the browser API
-    getToken().then(() => console.log('token:', token));
-  });
-  // console.log("hello")
-  // const {token} = useSelector((state) => state.auth);
-
+const AppNavigator = (props) => {
   return (
     <NavigationContainer>
       {/*{ token == null ? <MainDrawer/> : <DashboardStack/>}*/}
@@ -83,7 +68,7 @@ const AppNavigator = props => {
 };
 const styles = StyleSheet.create({
   drawerStyle: {
-    width: '70%',
+    width: "70%",
     elevation: 30,
     shadowOpacity: 5,
     borderBottomWidth: 1,
