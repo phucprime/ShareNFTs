@@ -1,23 +1,25 @@
-import React from 'react';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import React from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export const verifyLoginService = (type, code, data, props) => {
-  return async dispatch => {
+  return async (dispatch) => {
     try {
-      alert(resData.message);
-      saveDataToStorage(resData.token);
-      props.navigation.navigate('Home');
+      if (code === "111111") {
+        props.navigation.navigate("Home");
+      } else {
+        alert("demo code is 111111");
+      }
     } catch (e) {
       console.log(e.error);
     }
   };
 };
 
-const saveDataToStorage = token => {
+const saveDataToStorage = (token) => {
   AsyncStorage.setItem(
-    'userData',
+    "userData",
     JSON.stringify({
       token: token,
-    }),
+    })
   );
 };
