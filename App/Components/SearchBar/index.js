@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import PropTypes from 'prop-types';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
 import {
   View,
   TextInput,
@@ -11,7 +11,7 @@ import {
   TouchableWithoutFeedback,
   Text,
   StyleSheet,
-} from 'react-native';
+} from "react-native";
 
 class SearchBar extends Component {
   static propTypes = {
@@ -23,7 +23,7 @@ class SearchBar extends Component {
   };
 
   static defaultProps = {
-    searchPlaceholder: 'Search',
+    searchPlaceholder: "Search",
     onClear: () => null,
     onFocus: () => null,
     onBlur: () => null,
@@ -50,7 +50,7 @@ class SearchBar extends Component {
 
   clear = () => {
     this.input.clear();
-    this.onChangeText('');
+    this.onChangeText("");
     this.props.onClear();
   };
 
@@ -90,9 +90,9 @@ class SearchBar extends Component {
     });
   };
 
-  onChangeText = text => {
+  onChangeText = (text) => {
     this.props.onChangeText(text);
-    this.setState({isEmpty: text === ''});
+    this.setState({ isEmpty: text === "" });
   };
 
   render() {
@@ -105,14 +105,14 @@ class SearchBar extends Component {
       activityIndicator,
     } = styles;
 
-    const {searchPlaceholder, style} = this.props;
+    const { searchPlaceholder, style } = this.props;
 
-    const {hasFocus, isEmpty, showLoader} = this.state;
+    const { hasFocus, isEmpty, showLoader } = this.state;
 
     const inputStyleCollection = [inputStyle];
 
     if (hasFocus) {
-      inputStyleCollection.push({flex: 1});
+      inputStyleCollection.push({ flex: 1 });
     }
 
     return (
@@ -129,7 +129,7 @@ class SearchBar extends Component {
             style={inputStyleCollection}
             placeholderTextColor="#515151"
             autoCorrect={false}
-            ref={ref => {
+            ref={(ref) => {
               this.input = ref;
             }}
           />
@@ -163,34 +163,34 @@ const styles = StyleSheet.create({
   container: {
     height: 40,
     borderRadius: 5,
-    backgroundColor: '#ddd',
+    backgroundColor: "#ddd",
     marginLeft: 10,
     marginRight: 10,
     marginBottom: 5,
     marginTop: 5,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
   },
   inputStyle: {
-    alignSelf: 'center',
+    alignSelf: "center",
     marginLeft: 5,
     height: 40,
     fontSize: 14,
   },
   leftIconStyle: {
     height: 30,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     marginLeft: 8,
   },
   rightContainer: {
-    flexDirection: 'row',
+    flexDirection: "row",
   },
   rightIconStyle: {
     height: 30,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     marginRight: 8,
   },
   activityIndicator: {
