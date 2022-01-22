@@ -48,7 +48,7 @@ const SigninScreen = (props) => {
       action1 = signUpService(activeButtonName, text, props);
       dispatch(action1);
       setLoading(false);
-    }, 1500);
+    }, 1000);
   };
 
   return (
@@ -65,7 +65,7 @@ const SigninScreen = (props) => {
           <Image
             style={{
               width: wp("100%"),
-              height: hp("58%"),
+              height: hp("45%"),
             }}
             source={require("../../Assets/Header.png")}
           />
