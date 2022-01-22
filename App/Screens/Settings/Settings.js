@@ -1,13 +1,9 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { SafeAreaView, Text, TouchableOpacity, View } from "react-native";
 import { widthPercentageToDP as wp } from "../../Components/ResponsiveLayout";
 import AntDesign from "react-native-vector-icons/AntDesign";
 
 const Settings = (props) => {
-  const [size, setSize] = React.useState("");
-
-  useEffect(() => {});
-
   return (
     <SafeAreaView>
       <View style={{ marginTop: 60, height: "100%" }}>
