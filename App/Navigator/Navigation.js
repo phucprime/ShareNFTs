@@ -11,7 +11,6 @@ import SendNFT from "../Screens/SendNFT/SendNFT";
 import CreateAccount from "../Screens/CreateAccount/CreateAccount";
 import SecureAccount from "../Screens/SecureAccount/SecureAccount";
 import login from "../Screens/SignIn/login";
-import loginVerify from "../Screens/VarificationCode/loginVerify";
 import ClaimNFT from "../Screens/ClaimNFT/ClaimNFT";
 import Settings from "../Screens/Settings/Settings";
 
@@ -26,7 +25,6 @@ const DashboardStack = (props) => {
     >
       <Stack.Screen name="Signin" component={SigninScreen} />
       <Stack.Screen name="login" component={login} />
-      <Stack.Screen name="loginVerify" component={loginVerify} />
       <Stack.Screen name="CreateAccount" component={CreateAccount} />
       <Stack.Screen name="SecureAccount" component={SecureAccount} />
       <Stack.Screen
