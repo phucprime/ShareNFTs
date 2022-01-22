@@ -46,7 +46,7 @@ const SendNFT = (props) => {
     setTimeout(() => {
       setLoading(false);
     }, 1500);
-  });
+  }, []);
 
   const setCheckedOnList = (contact) => {
     let contactsCopy = contacts;
