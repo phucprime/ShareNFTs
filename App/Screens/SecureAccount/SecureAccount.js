@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React from "react";
 import {
   View,
   Text,
@@ -16,12 +16,6 @@ import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityI
 import Feather from "react-native-vector-icons/Feather";
 
 const SecureAccount = (props) => {
-  const [text, setText] = React.useState("");
-
-  const onChangeText = (text) => {
-    setText(text);
-  };
-
   return (
     <SafeAreaView>
       <StatusBar
