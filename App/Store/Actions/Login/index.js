@@ -1,9 +1,9 @@
-import React from 'react';
+import React from "react";
 
 export const logInService = (type, data, props) => {
-  return async dispatch => {
+  return async (dispatch) => {
     try {
-      props.navigation.navigate('loginVerify', {
+      props.navigation.navigate("Verify", {
         loginType: type,
         loginData: data,
       });
