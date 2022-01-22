@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   View,
   Text,
@@ -7,17 +7,17 @@ import {
   Image,
   TouchableOpacity,
 } from "react-native";
-import styles from "./styles";
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
 } from "../../Components/ResponsiveLayout";
+import styles from "./styles";
 import MyNFTs from "../../Components/MyNFTs";
 import SentNFT from "../../Components/SentNFT";
 import ReceivedNFT from "../../Components/ReceivedNFT";
 
 const DashboardScreen = (props) => {
-  const [activeButtonName, setActiveButtonName] = React.useState("My NFTs");
+  const [activeButtonName, setActiveButtonName] = useState("My NFTs");
 
   const changeButtonName = (text) => {
     setActiveButtonName(text);
