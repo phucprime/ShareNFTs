@@ -23,15 +23,16 @@ const DashboardStack = (props) => {
         headerShown: false,
       }}
     >
-      <Stack.Screen name="Signin" component={SigninScreen} />
-      <Stack.Screen name="login" component={login} />
-      <Stack.Screen name="CreateAccount" component={CreateAccount} />
-      <Stack.Screen name="SecureAccount" component={SecureAccount} />
       <Stack.Screen
         name="Home"
         component={DashboardScreen}
         options={{ gestureEnabled: false }}
       />
+      <Stack.Screen name="Signin" component={SigninScreen} />
+      <Stack.Screen name="login" component={login} />
+      <Stack.Screen name="CreateAccount" component={CreateAccount} />
+      <Stack.Screen name="SecureAccount" component={SecureAccount} />
+
       <Stack.Screen name="Verify" component={VerificationCode} />
       <Stack.Screen name="createNFT" component={CreateNFTScreen} />
       <Stack.Screen name="PreviewNFT" component={PreviewNFT} />
