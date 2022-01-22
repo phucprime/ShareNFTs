@@ -12,15 +12,43 @@ import {
   widthPercentageToDP as wp,
 } from "../../Components/ResponsiveLayout";
 import styles from "./styles";
-import MyNFTs from "../../Components/MyNFTs";
-import SentNFT from "../../Components/SentNFT";
-import ReceivedNFT from "../../Components/ReceivedNFT";
+import HomeListComp from "../../Components/HomeListComp";
+import { listMyNFTs, listSent, listReceived } from "./constant";
 
 const DashboardScreen = (props) => {
   const [activeButtonName, setActiveButtonName] = useState("My NFTs");
 
   const changeButtonName = (text) => {
     setActiveButtonName(text);
+  };
+
+  const TabComp = ({ title }) => {
+    return (
+      <TouchableOpacity
+        onPress={() => changeButtonName(title)}
+        style={{
+          height: "80%",
+          width: "32%",
+          marginRight: "1%",
+          borderRadius: 10,
+          justifyContent: "center",
+          alignItems: "center",
+          alignSelf: "center",
+          backgroundColor: activeButtonName === title ? "#fff" : "transparent",
+        }}
+      >
+        <Text
+          style={{
+            textAlign: "center",
+            color: activeButtonName === title ? "#000" : "#fff",
+            fontSize: 16,
+            fontWeight: activeButtonName === title ? "bold" : "normal",
+          }}
+        >
+          {title}
+        </Text>
+      </TouchableOpacity>
+    );
   };
 
   return (
@@ -36,7 +64,7 @@ const DashboardScreen = (props) => {
           style={{
             width: wp("80%"),
             justifyContent: "center",
-            marginTop: 68,
+            marginTop: hp("8%"),
             flexDirection: "row",
           }}
         >
@@ -68,10 +96,7 @@ const DashboardScreen = (props) => {
               }}
               source={require("../../Assets/profile.png")}
             />
-            <Text style={{ fontSize: 14, color: "#fff" }}>
-              {/* {userDetail.username} */}
-              {` username`}
-            </Text>
+            <Text style={{ fontSize: 14, color: "#fff" }}>{` username`}</Text>
           </TouchableOpacity>
         </View>
 
@@ -86,90 +111,22 @@ const DashboardScreen = (props) => {
             flexDirection: "row",
           }}
         >
-          <TouchableOpacity
-            onPress={() => changeButtonName("My NFTs")}
-            style={{
-              justifyContent: "center",
-              alignItems: "center",
-              backgroundColor:
-                activeButtonName === "My NFTs" ? "#fff" : "transparent",
-              height: "80%",
-              width: "32%",
-              marginLeft: "1.5%",
-              borderRadius: 10,
-              alignSelf: "center",
-            }}
-          >
-            <Text
-              style={{
-                textAlign: "center",
-                color: activeButtonName === "My NFTs" ? "#000" : "#fff",
-                fontSize: 16,
-                fontWeight: activeButtonName === "My NFTs" ? "bold" : "normal",
-              }}
-            >
-              My NFTs
-            </Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            onPress={() => changeButtonName("Sent")}
-            style={{
-              justifyContent: "center",
-              alignItems: "center",
-              backgroundColor:
-                activeButtonName === "Sent" ? "#fff" : "transparent",
-              height: "80%",
-              width: "32%",
-              marginRight: "1%",
-              borderRadius: 10,
-              alignSelf: "center",
-            }}
-          >
-            <Text
-              style={{
-                textAlign: "center",
-                color: activeButtonName === "Sent" ? "#000" : "#fff",
-                fontSize: 16,
-                fontWeight: activeButtonName === "Sent" ? "bold" : "normal",
-              }}
-            >
-              Sent
-            </Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            onPress={() => changeButtonName("Received")}
-            style={{
-              justifyContent: "center",
-              alignItems: "center",
-              backgroundColor:
-                activeButtonName === "Received" ? "#fff" : "transparent",
-              height: "80%",
-              width: "32%",
-              marginRight: "1%",
-              borderRadius: 10,
-              alignSelf: "center",
-            }}
-          >
-            <Text
-              style={{
-                textAlign: "center",
-                color: activeButtonName === "Received" ? "#000" : "#fff",
-                fontSize: 16,
-                fontWeight: activeButtonName === "Received" ? "bold" : "normal",
-              }}
-            >
-              Received
-            </Text>
-          </TouchableOpacity>
+          <TabComp title={"My NFTs"} />
+          <TabComp title={"Sent"} />
+          <TabComp title={"Received"} />
         </View>
       </View>
 
       <View style={{ height: hp("90%"), backgroundColor: "#ededed" }}>
-        {activeButtonName === "My NFTs" && <MyNFTs props={props} />}
-        {activeButtonName === "Sent" && <SentNFT props={props} />}
-        {activeButtonName === "Received" && <ReceivedNFT props={props} />}
+        {activeButtonName === "My NFTs" && (
+          <HomeListComp props={props} data={listMyNFTs} />
+        )}
+        {activeButtonName === "Sent" && (
+          <HomeListComp props={props} data={listSent} />
+        )}
+        {activeButtonName === "Received" && (
+          <HomeListComp props={props} data={listReceived} />
+        )}
       </View>
     </SafeAreaView>
   );
