@@ -30,7 +30,6 @@ const DashboardScreen = (props) => {
         style={{
           height: "80%",
           width: "32%",
-          marginRight: "1%",
           borderRadius: 10,
           justifyContent: "center",
           alignItems: "center",
@@ -110,6 +109,8 @@ const DashboardScreen = (props) => {
             alignSelf: "center",
             marginTop: 30,
             flexDirection: "row",
+            justifyContent: "space-between",
+            paddingHorizontal: 10,
           }}
         >
           {tabItems.map((item) => (
