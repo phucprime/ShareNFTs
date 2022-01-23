@@ -57,7 +57,6 @@ const renderItem = ({ item }) => (
 
 const HomeListComp = ({ props, data }) => {
   const [nftQuantityShow, setNftQuantityShow] = useState(true);
-
   useEffect(() => {
     let timer;
     if (nftQuantityShow) {

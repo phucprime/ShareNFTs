@@ -16,16 +16,17 @@ import HomeListComp from "../../Components/HomeListComp";
 import { listMyNFTs, listSent, listReceived } from "./constant";
 
 const DashboardScreen = (props) => {
-  const [activeButtonName, setActiveButtonName] = useState("My NFTs");
-
-  const changeButtonName = (text) => {
-    setActiveButtonName(text);
-  };
+  const tabItems = [
+    { id: 0, title: "My NFTs" },
+    { id: 1, title: "Sent" },
+    { id: 2, title: "Received" },
+  ];
+  const [activeButtonName, setActiveButtonName] = useState(tabItems[0].title);
 
   const TabComp = ({ title }) => {
     return (
       <TouchableOpacity
-        onPress={() => changeButtonName(title)}
+        onPress={() => setActiveButtonName(title)}
         style={{
           height: "80%",
           width: "32%",
@@ -111,9 +112,9 @@ const DashboardScreen = (props) => {
             flexDirection: "row",
           }}
         >
-          <TabComp title={"My NFTs"} />
-          <TabComp title={"Sent"} />
-          <TabComp title={"Received"} />
+          {tabItems.map((item) => (
+            <TabComp title={item.title} key={item.id} />
+          ))}
         </View>
       </View>
 
