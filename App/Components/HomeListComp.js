@@ -85,7 +85,7 @@ const HomeListComp = ({ props, data }) => {
           }}
         >
           <Text style={{ fontSize: 13 }}>
-            {` loading... ${data.length} NFTs found `}
+            {` loading... ${data.length} NFT(s) found `}
           </Text>
         </View>
       )}
